@@ -10,7 +10,9 @@ import {Router} from '@angular/router';
 })
 export class CustomerCreateComponent implements OnInit {
   addCustomerForm: FormGroup;
-  constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router) { }
+  constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router) { 
+    this.router = router;
+  }
 
   ngOnInit() {
     this.addCustomerForm = this.fb.group({
@@ -21,6 +23,7 @@ export class CustomerCreateComponent implements OnInit {
       country: [''],
       title: ['']
     });
+    console.log(this.router);
   }
 
   addCustomer() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {CustomerService} from '../customer.service';
 import {Router} from '@angular/router';
 
@@ -12,11 +12,15 @@ export class CustomerCreateComponent implements OnInit {
   addCustomerForm: FormGroup;
   constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router) { 
     this.router = router;
+    this.addCustomerForm = new FormGroup({
+      name: new FormControl('initial value'),
+      email: new FormControl('initial value')
+    })
   }
 
   ngOnInit() {
     this.addCustomerForm = this.fb.group({
-      name: [''],
+      name: ['test'],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
       city: [''],

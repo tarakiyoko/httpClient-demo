@@ -33,8 +33,6 @@ export class CustomerService {
 
   addCustomer(customer: Customer): Observable<Customer> {
     console.log(customer);
-
-
     return this.httpClient
       .post<Customer>('http://127.0.0.1:3000/customers', customer, {}).pipe(
         tap(_ => console.log('added customer')),
